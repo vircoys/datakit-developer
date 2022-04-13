@@ -3,14 +3,13 @@ FROM ubuntu:20.04
 ARG TARGETARCH
 
 ENV PATH=$PATH:/usr/local/go/bin
-
+ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /root
 
-RUN apt-get update && apt-get install -y git make curl \
+RUN apt-get update && apt-get install -y git make curl tree tzdata \
   && apt-get install -y clang llvm \
   && apt-get install -y gcc \
-  && if [ "${TARGETARCH}" = "amd64" ]; then apt-get install -y gcc-multilib tree; fi \
-  && rm -rf /var/lib/apt/lists/*
+  && if [ "${TARGETARCH}" = "amd64" ]; then apt-get install -y gcc-multilib tree; fi
 
 RUN curl -Lo go1.16.12.linux-${TARGETARCH}.tar.gz https://go.dev/dl/go1.16.12.linux-${TARGETARCH}.tar.gz \
   && tar -xzf go1.16.12.linux-${TARGETARCH}.tar.gz -C /usr/local/ \
