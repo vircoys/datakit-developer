@@ -1,10 +1,14 @@
 # 制作 DataKit Ubuntu 开发环境镜像
 
-```
-构建环境需要使用 Ubuntu 18.04+ 系统上，由于其涉及到内核头文件的安装；
+
+构建环境需要使用 **Ubuntu 18.04+** 系统上，由于其涉及到内核头文件的安装；
 
 但可自行实现内核头文件的安装，以避开此要求。
-```
+
+需要自行安装：
+  * **docker** (或者 **nerdctl** 和 **containerd**) 
+  
+  * **[buildkit](https://github.com/moby/buildkit/blob/master/examples/systemd/system/buildkit.service)**
 
 ## DataKit 开发环境依赖项
 
@@ -36,13 +40,20 @@
 
 1. docker 工具
 
-```
+```shell
 docker buildx build --platform amd64,arm64 . -t datakit-developer:1.0
+
+# or
+# docker buildx build --platform amd64,arm64 . -t datakit-developer:1.0 --build-arg https_proxy="http://localhost:10809"
 ```
 2. nerdctl 工具
 
 ```
 nerdctl build --platform amd64,arm64 . -t datakit-developer:1.0
+
+# or
+# nerdctl build --platform amd64,arm64 . -t datakit-developer:1.0 --build-arg https_proxy="http://localhost:10809"
+
 ```
 
 ## 启动容器
