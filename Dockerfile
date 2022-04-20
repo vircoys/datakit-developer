@@ -26,6 +26,6 @@ RUN echo "PATH=$PATH:/usr/local/go/bin" >> $HOME/.bashrc \
 
 RUN mkdir -p /root/go/src/gitlab.jiagouyun.com/cloudcare-tools/ \
   && apt-get install -y linux-headers-$(uname -r) \
-  && echo "export KERNEL_SRC=/usr/src/linux-headers-$(uname -r)" >> $HOME/.bashrc 
+  && echo "export DK_BPF_KERNEL_SRC_PATH=/usr/src/linux-headers-$(uname -r)" >> $HOME/.bashrc 
 
 WORKDIR /root/go/src/gitlab.jiagouyun.com/cloudcare-tools/

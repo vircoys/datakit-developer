@@ -1,0 +1,3 @@
+# 仅以 docker 为例， 挂载主机的 .ssh 目录到 /root/.ssh, datakit 目录到 /root/go/src/gitlab.jiagouyun.com/cloudcare-tools/datakit
+# 例： docker run -v /root/.ssh:/root/.ssh -v /root/datakit:/root/go/src/gitlab.jiagouyun.com/cloudcare-tools/datakit -ti datakit-developer:1.0 /bin/bash
+docker run -v <.ssh 文件夹>:/root/.ssh -v <datakit 文件夹>:/root/go/src/gitlab.jiagouyun.com/cloudcare-tools/datakit -ti <镜像 id/tag> /bin/bash
